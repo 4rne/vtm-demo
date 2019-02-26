@@ -16,7 +16,10 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+package vtmDemo;
+
 import org.oscim.core.MapPosition;
+
 import org.oscim.core.Tile;
 import org.oscim.gdx.GdxMapApp;
 import org.oscim.layers.tile.buildings.BuildingLayer;
@@ -35,6 +38,7 @@ import org.oscim.tiling.source.mapfile.MapFileTileSource;
 import org.oscim.tiling.source.mapfile.MapInfo;
 
 import java.io.File;
+
 
 public class MapsforgeTest extends MyMapApp {
 
