@@ -6,6 +6,9 @@
  */
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = 'vtmDemo.MapsforgeTest'
 
 eclipse {
     classpath {
@@ -22,10 +25,6 @@ sourceSets {
     }
 }
 
-application {
-    mainClassName = 'MapsforgeTest'
-}
-
 repositories {
     //mavenCentral()
 	maven { url 'https://jitpack.io' }
@@ -38,7 +37,7 @@ repositories {
 dependencies {
 	implementation 'org.mapsforge:vtm:[0.10.0]'
 	implementation 'org.mapsforge:vtm-themes:[0.10.0]'
-	implementation 'org.slf4j:slf4j-api:1.7.25'
+	compile 'org.slf4j:slf4j-nop:1.7.25'
 	implementation 'org.mapsforge:vtm-gdx:[0.10.0]'
 	implementation 'org.mapsforge:vtm-desktop:[0.10.0]'
 	implementation 'org.mapsforge:vtm-desktop:[0.10.0]:natives-linux'
@@ -52,4 +51,14 @@ dependencies {
 	implementation 'org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-osx'
 	implementation 'org.lwjgl.lwjgl:lwjgl-platform:2.9.3:natives-windows'
 	implementation 'com.github.blackears:svgSalamander:v1.1.1'
+}
+
+task fatJar(type: Jar, dependsOn: classes) {
+    classifier = 'jar-with-dependencies'
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    exclude 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.SF'
+    manifest {
+        attributes 'Main-Class': "${mainClassName}"
+    }
+    with jar
 }
