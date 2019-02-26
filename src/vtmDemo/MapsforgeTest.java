@@ -59,7 +59,6 @@ public class MapsforgeTest extends MyMapApp
 	{
 		MapFileTileSource tileSource = new MapFileTileSource();
 		tileSource.setMapFile(mapFile.getAbsolutePath());
-		// tileSource.setPreferredLanguage("en");
 
 		VectorTileLayer l = mMap.setBaseMap(tileSource);
 		loadTheme(null);
@@ -68,9 +67,6 @@ public class MapsforgeTest extends MyMapApp
 			mMap.layers().add(new S3DBLayer(mMap, l));
 		else
 			mMap.layers().add(new BuildingLayer(mMap, l));
-
-		// if (poi3d)
-		// mMap.layers().add(new Poi3DLayer(mMap, l));
 
 		mMap.layers().add(new LabelLayer(mMap, l));
 
@@ -99,13 +95,6 @@ public class MapsforgeTest extends MyMapApp
 					Tile.SIZE * 4);
 		}
 		mMap.setMapPosition(pos);
-	}
-
-	@Override
-	public void dispose()
-	{
-		// MapPreferences.saveMapPosition(mMap.getMapPosition());
-		super.dispose();
 	}
 
 	static File getMapFile(String[] args)
