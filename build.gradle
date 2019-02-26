@@ -14,7 +14,17 @@ eclipse {
     }
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+    }
+}
 
+application {
+    mainClassName = 'MapsforgeTest'
+}
 
 repositories {
     //mavenCentral()

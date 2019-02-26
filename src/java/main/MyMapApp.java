@@ -25,12 +25,9 @@ public class MyMapApp extends GdxMap
     public static void run(GdxMap map, LwjglApplicationConfiguration config, int tileSize) {
         Tile.SIZE = FastMath.clamp(tileSize, 128, 512);
 
-//        new LwjglApplication(map, (config == null ? getConfig(map.getClass().getSimpleName()) : config));
         LwjglAWTCanvas mapC = new LwjglAWTCanvas(map, getConfig(map.getClass().getSimpleName()));
-        JFrame f = new JFrame("Kartentest");
+        JFrame f = new JFrame("Swing map demo");
         f.getContentPane().add(mapC.getCanvas(), BorderLayout.CENTER);
-        f.getContentPane().add(new JButton("my button"), BorderLayout.SOUTH);
-        f.getContentPane().add(new JButton("my button"), BorderLayout.NORTH);
         f.setSize(600, 400);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
@@ -39,21 +36,11 @@ public class MyMapApp extends GdxMap
     protected static LwjglApplicationConfiguration getConfig(String title) {
         LwjglApplicationConfiguration.disableAudio = true;
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-        cfg.title = title != null ? title : "vtm-gdx";
 
-//        int[] sizes = new int[]{128, 64, 32, 16};
-//        for (int size : sizes) {
-//            String path = "res/ic_vtm_" + size + ".png";
-//            cfg.addIcon(path, Files.FileType.Internal);
-//        }
-
-        cfg.width = 800;
-        cfg.height = 600;
         cfg.stencil = 8;
-        //cfg.samples = 2;
+//        cfg.samples = 2;
         cfg.foregroundFPS = 30;
         cfg.backgroundFPS = 10;
-        cfg.forceExit = false;
         return cfg;
     }
 
