@@ -4,6 +4,7 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
@@ -26,23 +27,26 @@ sourceSets {
 }
 
 repositories {
-    //mavenCentral()
+  google()
+  jcenter()
 	maven { url 'https://jitpack.io' }
-	google()
-    maven { url 'https://repo.boundlessgeo.com/main/' }
-    jcenter()
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+  maven { url 'https://repo.boundlessgeo.com/main/' }
+  maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+}
+
+ext {
+	vtmVersion = '0.10.0'
 }
 
 dependencies {
-	implementation 'org.mapsforge:vtm:[0.10.0]'
-	implementation 'org.mapsforge:vtm-themes:[0.10.0]'
 	compile 'org.slf4j:slf4j-nop:1.7.25'
-	implementation 'org.mapsforge:vtm-gdx:[0.10.0]'
-	implementation 'org.mapsforge:vtm-desktop:[0.10.0]'
-	implementation 'org.mapsforge:vtm-desktop:[0.10.0]:natives-linux'
-	implementation 'org.mapsforge:vtm-desktop:[0.10.0]:natives-osx'
-	implementation 'org.mapsforge:vtm-desktop:[0.10.0]:natives-windows'
+	implementation "org.mapsforge:vtm:$vtmVersion"
+	implementation "org.mapsforge:vtm-themes:$vtmVersion"
+	implementation "org.mapsforge:vtm-gdx:$vtmVersion"
+	implementation "org.mapsforge:vtm-desktop:$vtmVersion"
+	implementation "org.mapsforge:vtm-desktop:$vtmVersion:natives-linux"
+	implementation "org.mapsforge:vtm-desktop:$vtmVersion:natives-osx"
+	implementation "org.mapsforge:vtm-desktop:$vtmVersion:natives-windows"
 	implementation 'com.badlogicgames.gdx:gdx:1.9.9'
 	implementation 'com.badlogicgames.gdx:gdx-platform:1.9.9:natives-desktop'
 	implementation 'com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.9'
