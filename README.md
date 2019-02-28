@@ -8,5 +8,5 @@ This project is a little demonstration to show how to implement the [mapsforge/v
 ```
 ### Run it
 ```bash
-java -jar build/libs/map-test-jar-with-dependencies.jar /path/to/map_file.map
+java -jar build/libs/vtm-demo-jar-with-dependencies.jar /path/to/map_file.map
 ```
