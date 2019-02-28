@@ -73,26 +73,21 @@ public class MapsforgeTest extends MyMapApp
 		DefaultMapScaleBar mapScaleBar = new DefaultMapScaleBar(mMap);
 		mapScaleBar.setScaleBarMode(DefaultMapScaleBar.ScaleBarMode.BOTH);
 		mapScaleBar.setDistanceUnitAdapter(MetricUnitAdapter.INSTANCE);
-		mapScaleBar
-				.setSecondaryDistanceUnitAdapter(ImperialUnitAdapter.INSTANCE);
-		mapScaleBar
-				.setScaleBarPosition(MapScaleBar.ScaleBarPosition.BOTTOM_LEFT);
+		mapScaleBar.setSecondaryDistanceUnitAdapter(ImperialUnitAdapter.INSTANCE);
+		mapScaleBar.setScaleBarPosition(MapScaleBar.ScaleBarPosition.BOTTOM_LEFT);
 
-		MapScaleBarLayer mapScaleBarLayer = new MapScaleBarLayer(mMap,
-				mapScaleBar);
+		MapScaleBarLayer mapScaleBarLayer = new MapScaleBarLayer(mMap, mapScaleBar);
 		BitmapRenderer renderer = mapScaleBarLayer.getRenderer();
 		renderer.setPosition(GLViewport.Position.BOTTOM_LEFT);
 		renderer.setOffset(5, 0);
 		mMap.layers().add(mapScaleBarLayer);
 
-		// MapPosition pos = MapPreferences.getMapPosition();
 		MapPosition pos = new MapPosition(53.5, 10.0, 15);
 		MapInfo info = tileSource.getMapInfo();
 		if (pos == null || !info.boundingBox.contains(pos.getGeoPoint()))
 		{
 			pos = new MapPosition();
-			pos.setByBoundingBox(info.boundingBox, Tile.SIZE * 4,
-					Tile.SIZE * 4);
+			pos.setByBoundingBox(info.boundingBox, Tile.SIZE * 4, Tile.SIZE * 4);
 		}
 		mMap.setMapPosition(pos);
 	}

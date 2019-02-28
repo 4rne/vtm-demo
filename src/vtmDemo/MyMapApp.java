@@ -23,13 +23,11 @@ public class MyMapApp extends GdxMap
 		run(map, null, Tile.SIZE);
 	}
 
-	public static void run(GdxMap map, LwjglApplicationConfiguration config,
-			int tileSize)
+	public static void run(GdxMap map, LwjglApplicationConfiguration config, int tileSize)
 	{
 		Tile.SIZE = FastMath.clamp(tileSize, 128, 512);
 
-		LwjglAWTCanvas mapC = new LwjglAWTCanvas(map,
-				getConfig(map.getClass().getSimpleName()));
+		LwjglAWTCanvas mapC = new LwjglAWTCanvas(map, getConfig(map.getClass().getSimpleName()));
 		JFrame f = new JFrame("Swing map demo");
 		f.getContentPane().add(mapC.getCanvas(), BorderLayout.CENTER);
 		f.setSize(600, 400);
